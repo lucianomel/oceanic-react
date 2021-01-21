@@ -1,0 +1,13 @@
+.Author{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7rem;
+    background: rgb(207,218,218);
+    background: linear-gradient(90deg, rgba(207,218,218,1) 0%, rgba(177,177,177,1) 50%, rgba(223,247,245,1) 100%);
+}
+.Firm{
+    margin: 0;
+    font-weight: 500;
+}

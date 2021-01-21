@@ -1,0 +1,31 @@
+.Book{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(75, 75, 75, 0.411);
+    /* padding: 1rem 0; */
+    /* width: 80%; */
+    margin: 0 auto;
+    position: absolute;
+    top: 25rem;
+    left: 0;
+    z-index: 100;
+    border-radius: 0 1rem 1rem 0;
+}
+@media (max-width:960px){
+    .Book{
+        display: none;
+    }
+    .ClosedBook{
+        display: none;
+    }
+}
+.DatePicker{
+    display: flex;
+    align-items: center;
+}
+.ClosedBook{
+    z-index: 102;
+    /* background-color: rgba(75, 75, 75, 0.438); */
+    padding: 2rem;
+}

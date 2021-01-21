@@ -1,0 +1,11 @@
+.HorizCard{
+    margin:30px 0;
+    display: flex;
+    align-items: center;
+    box-shadow: 5px 5px 3px #aaaaaa;
+    transition: all 0.5s ease;
+    padding: 1rem 0;
+}
+#HorizCard__text{
+    margin: 2rem 0;
+}

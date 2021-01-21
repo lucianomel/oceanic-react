@@ -1,0 +1,27 @@
+.DeptoCard{
+    padding: 1rem;
+}
+/* .Card__Price{
+
+}
+.Card__Rating{
+
+} */
+.Card__Subtitle{
+    margin: 0;
+    color: grey;
+    font-weight: 500;
+}
+.Card__Title{
+    font-weight: 300;
+}
+.Card__TextBlock{
+    text-align: left;
+}
+.Card__Bottom{
+    display: flex;
+    justify-content: space-between;
+}
+.Card__Bottom p{
+    display: inline;
+}

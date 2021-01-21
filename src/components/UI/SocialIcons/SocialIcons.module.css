@@ -1,0 +1,35 @@
+.SocialIconsWrapper{
+    z-index: 100;
+    position:     fixed;
+    font-size: 3.2rem;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 0.5rem;
+    right:0.5rem
+}
+.SocialIconFB,
+.SocialIconIN,
+.SocialIconWS{
+    margin: 0.2rem 0;
+    opacity: 0.8;
+    color: rgb(46, 45, 45);
+}
+.SocialIconFB:hover{
+    opacity: 1;
+    color: #4267B2;
+    transition: color 0.5s ease;
+}
+.SocialIconWS:hover{
+    color: #25D366;
+    transition: color 0.5s ease;
+}
+.SocialIconIN:hover{
+    color: #bc2a8d;
+    transition: color 0.5s ease;
+}
+@media (max-width:600px){
+    .SocialIconsWrapper{
+        font-size: 0;
+    }
+}

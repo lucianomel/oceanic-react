@@ -1,0 +1,37 @@
+.SerchHBar{
+    width: 100%;
+    background-color: rgba(100, 148, 237, 0.397);
+    margin: 0 0.5rem;
+    border-radius: 1rem;
+    /* display: flex;
+    justify-content: center;
+    flex-direction: row; */
+    
+}
+.Block{
+    padding: 0.5rem 0;
+}
+.SerchHBar__Title{
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+.Slider{
+    width: 80%;
+    margin: 1rem auto 0 auto;
+}
+.Guests input{
+    width: 3rem;
+    margin-left: 2rem;
+}
+.Location select{
+    width: 80%;
+    margin: 0 auto;
+}
+.Inline{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Pool{
+    margin-bottom: 0;
+}

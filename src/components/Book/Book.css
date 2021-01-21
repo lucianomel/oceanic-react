@@ -1,0 +1,24 @@
+.DateRangePicker{
+    display: flex;
+    align-items: center;
+    margin: 0 0.5rem;
+}
+#book__sitio:focus,
+#book__huespedes:focus{
+    box-shadow: none;
+    border:2px solid grey;
+}
+.translate-appear{
+    transform: translateX(-50vw);
+}
+.translate-appear-active{
+    transform: translateX(0);
+    transition: transform 0.7s ease;
+}
+.translate-exit{
+    transform: translateX(-50vw);
+}
+.translate-exit-active{
+    transform: translateX(0);
+    transition: transform 0.7s ease;
+}

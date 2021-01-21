@@ -1,0 +1,7 @@
+.translate-appear{
+    transform: translateX(100vw);
+}
+.translate-appear-active{
+    transform: translateX(0);
+    transition: transform 0.7s ease;
+}

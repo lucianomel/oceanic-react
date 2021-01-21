@@ -1,0 +1,14 @@
+.service__selected{
+    background-color: green;
+}
+.service__selected:focus,
+.service__selected:active{
+    background-color: green;
+}
+.ExtendLink{
+    color: blue;
+}
+.ExtendLink:hover{
+    font-weight: 600;   
+    cursor: pointer; 
+}

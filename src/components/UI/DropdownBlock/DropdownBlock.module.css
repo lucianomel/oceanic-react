@@ -1,0 +1,69 @@
+.DropdownBlock{
+    width: 90%;
+    height: 8rem;
+    transition: opacity 1s ease;
+    background: rgb(214,213,213);
+    background: linear-gradient(90deg, rgba(214,213,213,0.8603816526610644) 0%, rgba(181,208,206,1) 50%, rgba(82,212,199,0.7819502801120448) 100%);    margin: 2rem auto;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.DropdownBlock:hover{
+    filter: brightness(1.2);
+    transition: opacity 1s ease;
+}
+.PlusIcon{
+    font-size: 7rem;
+    color:white;
+    z-index: 10;
+    cursor: pointer;
+}
+@media (max-width:680px){
+    .PlusIcon{
+        font-size: 4rem;
+    }
+}
+@media (max-width:480px){
+    .PlusIcon{
+        font-size: 2.5rem;
+    }
+}
+@media (hover: hover) and (pointer: fine) {
+    .PlusIcon:hover{
+        color:rgb(105, 100, 100)
+    }
+}
+.PlusIcon:active{
+    color:rgb(105, 100, 100)
+}
+.TextBlock{
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    text-shadow: ivory;
+    font-family: 'Yusei Magic', sans-serif;
+    font-size: 2rem;
+}
+@media (min-width:600px){
+    .TextBlock{
+        font-size: 3rem;
+    }
+}
+.ImageBlock{
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.DropdownContent{
+    background: #1F1C2C;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #928dab50, #1f1c2c38);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #928dab54, #1f1c2c3d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    transition: visibility 2s ease;
+}
+.DropdownContentCard{
+    margin: 1.5rem 0;
+}
+.DropdownContentTitle{
+    font-weight: 300;
+    margin: 1rem auto;
+}
