@@ -1,7 +1,7 @@
 import { Fragment } from "react"
 import {Pagination} from 'react-bootstrap'
 
-const Pagination=props=>(
+const MyPagination=props=>(
     <Fragment>
         <Pagination>
             <Pagination.First />
@@ -22,3 +22,5 @@ const Pagination=props=>(
         </Pagination>
     </Fragment>
 )
+
+export default MyPagination

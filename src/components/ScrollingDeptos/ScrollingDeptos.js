@@ -1,9 +1,17 @@
-import { Component } from "react";
+import { Component, Fragment } from "react";
+import MyPagination from '../UI/Pagination/Pagination'
 import DeptoCard from "../DeptoCard/DeptoCard";
 
-class ScrollingDeptos extends Component{
+const ITEMS_PER_PAGE=5
 
+class ScrollingDeptos extends Component{
+    state={
+        currentPage:1,
+        nextPage:2,
+        prevPage:0
+    }
     fetchDeptos=()=>{
+        // API rest call, pass current page as parameter to limit input with offset of   currentPage
         return [
             {
                 _id:'1',
@@ -159,9 +167,12 @@ class ScrollingDeptos extends Component{
     }
     render(){
         return(
-               this.fetchDeptos().map(depto=>{
-                    return <DeptoCard key={depto._id} depto={depto}/>
-                })
+                <Fragment>
+                    {this.fetchDeptos().map(depto=>{
+                         return <DeptoCard key={depto._id} depto={depto}/>
+                     })}
+                     <MyPagination />
+                </Fragment>
             
         )
     }
