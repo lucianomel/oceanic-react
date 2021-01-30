@@ -1,5 +1,5 @@
 import { Fragment } from "react"
-import { Col, Container, Row } from "react-bootstrap"
+import { Col,  Row } from "react-bootstrap"
 import classes from './IntroLanding.module.css'
 
 const introLanding=props=>{
@@ -13,7 +13,7 @@ const introLanding=props=>{
                         </p>
                     </Col>
                     <Col lg={{span:7}} className={classes.ImgWrapper}>
-                        <img className={classes.Image} src='http://picsum.photos/id/2/500/300'></img>
+                        <img className={classes.Image} src='http://picsum.photos/id/2/500/300' alt='Intro Landing img' ></img>
                     </Col>
                 </Row>            
         </Fragment>

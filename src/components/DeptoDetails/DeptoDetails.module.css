@@ -1,0 +1,31 @@
+.Subtitle{
+    color: grey;
+}
+.LightFont{
+    font-weight: 300;
+}
+.CenterText{
+    display: flex;
+    align-items: center;
+}
+.AlignLeft{
+    text-align: left;
+}
+.DetailsBoxWrapper{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.DetailBox{
+    width: 100%;
+    min-height: 200px;
+    box-shadow: rgb(184, 181, 181);
+    box-shadow: 2px 2px 5px 5px grey;
+    border-radius: 2rem;
+    padding: 2rem;
+    text-align: left;
+}
+.ReservarBtn{
+    box-shadow: 5px 5px 5px black;
+    margin: 1rem 0;
+}

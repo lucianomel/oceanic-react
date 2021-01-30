@@ -29,7 +29,7 @@ class MySwiper extends Component{
         if(this.props.fullScreen){
             this.myref.current.swiper.autoplay.stop()
             this.myref.current.swiper.on('slideChange',()=>{
-            console.log(this.myref.current.swiper.activeIndex)
+            // console.log(this.myref.current.swiper.activeIndex)
             if(this.myref.current.swiper.activeIndex===(IMAGE_COUNT+1)){
                 // console.log('stop autoplay')
                 this.myref.current.swiper.autoplay.stop() 
@@ -44,7 +44,7 @@ class MySwiper extends Component{
         // swiper.querySelector('.swiper-button-next').innerHtml=<FontAwesomeIcon icon={faCoffee} />
     }
     loadSwiper(i){
-        console.log(i)
+        // console.log(i)
         this.setState(prevState=>{
             return {imgsLoaded:[...prevState.imgsLoaded,i]}
         })
@@ -107,7 +107,8 @@ class MySwiper extends Component{
                 null
                 }
                 <Swiper id="main" 
-                    style={{maxHeight:this.props.fullScreen?'620px':null}}
+                    style={{maxHeight:this.props.fullScreen?'620px':null,
+                    display:'flex',alignItems:'center'}}
                     loop={true}
                     autoplay={this.props.autoplay?{
                         delay:'5000',

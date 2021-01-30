@@ -9,12 +9,12 @@ import DropdownBlock from '../../components/UI/DropdownBlock/DropdownBlock'
 import Book from '../../components/Book/Book'
 
 class LandingPage extends Component{
-    state={
-        landingPath:'/Images/Landing/main/',
-        firstCardPath:'/Images/Landing/firstCard/',
-        secondCardPath:'/Images/Landing/secondCard/'
-    }
     render(){
+        const paths={
+            landingPath:'/Images/Landing/main/',
+            firstCardPath:'/Images/Landing/firstCard/',
+            secondCardPath:'/Images/Landing/secondCard/'
+        }
         return(
             <Fragment>
                     <Swiper width='100%' fullScreen title='Oceanic Propiedades' 
@@ -23,7 +23,7 @@ class LandingPage extends Component{
                         toggleShowTitle={this.props.showLandingTitle}
                         imagesRoutes={
                             ['Boca_Grande.jpg','cartagena.jpg']
-                            .map(route=>this.state.landingPath+route)
+                            .map(route=>paths.landingPath+route)
                         }
                     />
                     <SocialIcons/>
@@ -31,13 +31,13 @@ class LandingPage extends Component{
                     <HorizCard 
                         imagesRoutes={
                             ['Boca_Grande.jpg','cartagena.jpg']
-                            .map(route=>this.state.firstCardPath+route)
+                            .map(route=>paths.firstCardPath+route)
                         }
                         type='textRight'/>
                     <HorizCard 
                         imagesRoutes={
                             ['Boca_Grande.jpg','cartagena.jpg']
-                            .map(route=>this.state.secondCardPath+route)
+                            .map(route=>paths.secondCardPath+route)
                         }
                         type='textLeft'/>
                     <JumboLink imgRoute='manga_2.jpg' text='Departamentos destacados' 
@@ -47,7 +47,7 @@ class LandingPage extends Component{
                     <DropdownBlock dropdownTitle='El cabrero'/>
                     <DropdownBlock dropdownTitle='Marbella'/>
                     <DropdownBlock dropdownTitle='El Laguito' />
-                    <Book/>
+                    <Book loadLandingSearchParams={this.props.loadLandingSearchParams} />
             </Fragment>
         )
     }

@@ -2,7 +2,7 @@ import classes from "./DropdownBlock.module.css"
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faPlus} from '@fortawesome/free-solid-svg-icons'
 import { Col, Row,Container } from "react-bootstrap"
-import { Component, useEffect,useState } from "react"
+import { Component } from "react"
 import {CSSTransition} from 'react-transition-group'
 import './transitions.css'
 
@@ -50,16 +50,18 @@ class DropdownBlock extends Component{
                     this.fetchImages().map(img=>{
                         return(
                         <CSSTransition
+                            key={img.title}
                             in={true}
                             appear={true}
                             timeout={3000}
                             classNames="translate" >
-                            <Container 
-                                className={classes.DropdownContent} 
-                                key={img.title}>
+                            <Container className={classes.DropdownContent} >
                                 <Row className={classes.DropdownContentCard}>
                                     <Col lg={6} style={{display:'flex',alignItems:'center'}}>
-                                        <img src={img.route} className={classes.ImageBlock}>
+                                        <img 
+                                        src={img.route} 
+                                        className={classes.ImageBlock} 
+                                        alt={img.title}>
                                         </img>
                                     </Col>
                                     <Col lg={6}>

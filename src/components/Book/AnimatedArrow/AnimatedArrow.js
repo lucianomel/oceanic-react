@@ -7,8 +7,8 @@ const AnimatedArrow=props=>{
         <div className={classes.ClosedBook}
         id="ArrowWrapper">
           <input type="checkbox" id="animation1"/>
-            <label for="animation1">
-                <div class="arrow" onClick={props.toggleBooking} ></div>
+            <label htmlFor="animation1">
+                <div className="arrow" onClick={props.toggleBooking} ></div>
             </label>
         </div>
     )

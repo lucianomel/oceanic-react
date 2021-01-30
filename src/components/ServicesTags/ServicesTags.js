@@ -20,8 +20,20 @@ class ServicesTags extends Component{
             'Seguridad 24 hr',
             'Calefaccion',
             'Pileta propia',
-            'Accesibilidad silla ruedas'
+            'Accesibilidad silla ruedas',
+            'Heladera'
         ]
+    }
+    componentDidMount(){
+        this.colorDefaultSelected(['Wifi','Aire acondicionado'])
+    }
+    colorDefaultSelected=arrServices=>{
+        arrServices.forEach(
+            service=>{
+                const btn=document.getElementById(service)
+                btn.classList.add(classes.service__selected)
+            }
+        )
     }
     moreServices=()=>{
         this.setState({extended:true})
@@ -50,12 +62,13 @@ class ServicesTags extends Component{
                                 {service}
                             </Button>
                         }
+                        return null;
                     })}
-                    {this.state.extended?null:<a 
+                    {this.state.extended?null:<p 
                         className={classes.ExtendLink} 
                         onClick={this.moreServices}>
                             More
-                        </a>}
+                        </p>}
                 </ul>
             </div>
         )

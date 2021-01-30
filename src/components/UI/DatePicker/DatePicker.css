@@ -1,0 +1,7 @@
+.DateRangePicker_picker{
+    z-index: 20;
+}
+.DatePicker_wrapper{
+    display: flex;
+    justify-content: center;
+}

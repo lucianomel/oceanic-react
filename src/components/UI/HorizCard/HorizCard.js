@@ -16,9 +16,9 @@ class HorizCard extends Component{
         // if(this.state.showCard){
         //     return
         // }
-        console.log(this.myRef.current.clientHeight)
+        // console.log(this.myRef.current.clientHeight)
         let observer = new IntersectionObserver(entries=>{
-            console.log(+entries[0].intersectionRatio)
+            // console.log(+entries[0].intersectionRatio)
             entries.forEach(entry=>this.setState({showCard:entry.isIntersecting}))
         },{threshold:0.3});
         observer.observe(this.myRef.current)

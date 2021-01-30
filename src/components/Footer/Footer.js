@@ -27,7 +27,7 @@ const Footer=props=>{
                         <hr></hr>
                         <p>Carrera 4 # 46A – 29, Apto. 2408, Cartagena de Indias, Colombia</p>
                         <a href='https://www.google.com.ar/maps/search/edificio+cabrero+marina+club/@10.4322117,-75.5442461,1427m/data=!3m1!1e3?hl=es'
-                            target='_blank'>
+                            target='_blank' rel="noopener noreferrer">
                             Indicaciones para llegar
                         </a>
                     </Col>

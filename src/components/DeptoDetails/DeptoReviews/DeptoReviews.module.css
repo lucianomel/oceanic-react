@@ -1,0 +1,15 @@
+.AlignLeft{
+    text-align: left;
+}
+.LightFont{
+    font-weight: 300;
+}
+.ReviewCard{
+    text-align: left;
+}
+.ReviewDate{
+    color: grey;
+}
+.ReviewsBox{
+    padding: 1rem;
+}

@@ -25,3 +25,18 @@
 .Card__Bottom p{
     display: inline;
 }
+.Card{
+    color:black;
+    padding: 1rem;
+}
+.Card:hover,
+.Card:focus,
+.Card:active{
+    color: black;
+    background-color: rgb(230, 230, 230);
+    border-radius: 1rem;
+}
+.NoStyledLink:hover{
+    text-decoration: none;
+    outline: none;
+}

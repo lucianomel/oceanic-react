@@ -7,8 +7,12 @@
 }
 .ExtendLink{
     color: blue;
+    display: inline;
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 .ExtendLink:hover{
     font-weight: 600;   
     cursor: pointer; 
+    text-decoration: underline;
 }

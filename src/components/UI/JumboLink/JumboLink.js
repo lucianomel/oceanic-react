@@ -7,7 +7,9 @@ const JumboLink=props=>{
     return(
             <Link to={props.match.url+props.linkName} 
                 className={classes.JumboLink}>
-                    <img className={classes.JumboImage} src={'/Images/'+props.imgRoute}/>
+                    <img className={classes.JumboImage} 
+                    src={'/Images/'+props.imgRoute}
+                    alt={props.linkName} />
                 <h2 className={classes.JumboTitle} >{props.text}</h2>
             </Link>
     )

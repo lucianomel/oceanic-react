@@ -13,7 +13,7 @@
 }
 .navbar a.navbar-brand:hover,
 #navLink:hover{
-    border-radius: 1.8rem;
+    border-radius: 1rem;
     background-color: rgba(255, 255, 255, 0.87);
     transition: background-color 0.4s ease;
     color:black
@@ -49,13 +49,25 @@
     border:2px solid grey;
 }
 @media (max-width:992px){
-    #search__form{
+    /* #search__form{
         display: none;
+    } */
+    #navLink{
+        background-color: rgba(255, 255, 255, 0.479);
+        border-radius: 0.5rem;
+        margin: 0.2rem auto;
+        padding: 0.5rem;
+        color: black;
+        font-weight: 600;
+    }
+    #navLink.navbar__LoginButton{
+        display: inline-block;
+        margin-top: 0.3rem;
     }
 }
-#navLink{
+/* #navLink{
     margin: auto;
-}
+} */
 #search__form{
     display: flex;
     justify-content: center;

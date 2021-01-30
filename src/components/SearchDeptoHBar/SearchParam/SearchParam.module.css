@@ -1,0 +1,22 @@
+.InnerBlock input{
+    width: 3rem;
+    margin-left: 2rem;
+}
+.Block{
+    padding: 0.5rem 0;
+}
+.IndiferentCheckbox{
+    display: inline-block;
+    margin:0.8rem 0 0 1rem;
+    font-weight:300;
+}
+@media (max-width:1100px) and (min-width:768px){
+    p.IndiferentCheckbox{
+        display:block;
+    }
+}
+@media (max-width:768px){
+    p.IndiferentCheckbox{
+        display:inline;
+    }
+}

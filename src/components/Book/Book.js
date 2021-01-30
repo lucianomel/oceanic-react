@@ -1,8 +1,7 @@
 import 'react-dates/initialize'
-import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css';
+import DatePicker from '../UI/DatePicker/DatePicker';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Component,Fragment } from 'react';
+import React,{ Component,Fragment } from 'react';
 import {  Form,Button } from 'react-bootstrap';
 import classes from './Book.module.css'
 import './Book.css'
@@ -14,15 +13,33 @@ class Book extends Component{
         this.state={
             startDate:null,
             endDate:null,
+            focusedInput:undefined,
             showSearch:false
         }
         this.toggleBooking=this.toggleBooking.bind(this)
     }
     toggleBooking(){
-        console.log('Booking button clicked')
+        // console.log('Booking button clicked')
         this.setState(prevState=>{
             return {showSearch:!prevState.showSearch}
         })
+    }
+    sendLandingSearchParams=()=>{
+        const startDate= new Date(document.getElementById('start_date_id').value)
+        const endDate=new Date(document.getElementById('end_date_id').value)
+        const bookLocation=document.getElementById('book__sitio').value
+        const bookGuests=document.getElementById('book__huespedes').value
+        const searchParams={
+            startDate:startDate,
+            endDate:endDate,
+            location:bookLocation,
+            guests:bookGuests
+        }
+        this.props.loadLandingSearchParams(searchParams) //this redirects
+    }
+    loadDatesInBookState=dates=>{
+        console.log(dates)
+        return dates
     }
     render(){
         return(
@@ -39,21 +56,20 @@ class Book extends Component{
                         classNames="translate" >
                             <div style={{display:'flex',alignItems:'center'}}>
                                 <Form.Group style={{margin:'0 1rem'}}  controlId="book__sitio">
-                                <Form.Control type="text" placeholder="Sitio" />
+                                <Form.Control as="select">
+                                    <option>Eliga una ubicacion</option>
+                                    <option>Torices</option>
+                                    <option>Cabrero</option>
+                                    <option>Marbella</option>
+                                    <option>El laguito</option>
+                                </Form.Control>
                                 </Form.Group>
                                 <Form.Group style={{margin:0}} controlId="book__huespedes">
                                 <Form.Control type="number" placeholder="Nro Huespedes" />
                                 </Form.Group>
-                                <DateRangePicker 
-                                    startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-                                    startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                                    endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-                                    endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                                    onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-                                    focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                                    onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-                                />
-                                <Button style={{height:'2.5rem'}} variant="secondary">Ir</Button>
+                                <DatePicker />
+                                <Button onClick={this.sendLandingSearchParams} 
+                                    style={{height:'2.5rem'}} variant="secondary">Ir</Button>
                             </div>
                         </CSSTransition>
                         </Fragment>

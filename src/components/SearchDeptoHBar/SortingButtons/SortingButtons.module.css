@@ -1,0 +1,8 @@
+.active,
+.active:focus,
+.active:active{
+    background-color: green;
+    color: black;
+    font-weight: 300;
+    outline: none;
+}
