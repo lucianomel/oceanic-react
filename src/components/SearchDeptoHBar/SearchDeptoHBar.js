@@ -8,6 +8,9 @@ import ServicesTags from "../ServicesTags/ServicesTags";
 import SearchParam from "./SearchParam/SearchParam";
 import SortingButtons from "./SortingButtons/SortingButtons";
 import DatePicker from "../UI/DatePicker/DatePicker";
+import moment from 'moment'
+
+const onoffParam='Pileta'
 
 class SearchDeptoHBar extends Component{
     constructor(props) {
@@ -28,31 +31,52 @@ class SearchDeptoHBar extends Component{
                 Calefaccion:false,
                 Pileta_propia:false,
                 Accesibilidad_silla_ruedas:false,
-                Pileta:false,
+                [onoffParam]:false,
                 Heladera:false
             },
             location:'',
-            guests:undefined,
-            dorms:undefined,
-            bathrooms:undefined,
+            guests:"",
+            dorms:"",
+            bathrooms:"",
             sorting:['rating'],
-            startDate:null,
-            endDate:null
+            dates:{
+                startDate:null,
+                endDate:null,
+            },
+            extended:false
         };
         this.datePicker=React.createRef()
     }
-    // componentDidMount(){
-    //     this.setState({
-    //         startDate:this.datePicker.current.state.startDate,
-    //         endDate:this.datePicker.current.state.endDate,
-    //     })
+    async componentDidMount(){
+        await this.loadSearchParamsFromCache()
+        this.openExtendedServicesOnHidden()
+    }
+    // componentDidUpdate(){
+    //     if(!this.state.dates.endDate||!this.state.dates.startDate)
+    //     this.loadSearchParamsFromCache()
     // }
-    setSearchBarDates=dates=>{
-        console.log('Searchbar state: ',this.state)
-        if(this.state.endDate&&this.state.startDate){
+    loadSearchParamsFromCache=()=>{
+        let cacheSearch=JSON.parse(localStorage.getItem('oceanicSearch'))
+        if(!cacheSearch){
             return
         }
-        this.setState({startDate:dates.startDate,endDate:dates.endDate})
+        cacheSearch={
+            ...cacheSearch,
+            dates:{
+                startDate:moment(cacheSearch.dates.startDate),
+                endDate:moment(cacheSearch.dates.endDate)
+            }
+        }
+        // console.log(cacheSearch)
+        this.setState(cacheSearch)
+        // console.log(cacheSearch)
+    }
+    setSearchBarDates=dates=>{
+        // console.log('Searchbar state: ',this.state)
+        if(this.state.dates.endDate&&this.state.dates.startDate){
+            return
+        }
+        this.setState({dates:{startDate:dates.startDate,endDate:dates.endDate}})
     }
     getSearchParams=()=>{
         return this.state
@@ -62,9 +86,27 @@ class SearchDeptoHBar extends Component{
         servicesState[serviceName]=!servicesState[serviceName]
         this.setState({services:servicesState})
     }
-    togglePool=()=>{
-        const currentPoolState=this.state.pool
-        this.setState({services:{pool:!currentPoolState}})
+    toggleExtendedServices=()=>{
+        const currExtendedState=this.state.extended
+        console.log('toggling extendedServices')
+        this.setState({extended:!currExtendedState})
+    }
+    openExtendedServicesOnHidden=()=>{
+        const services={...this.state.services}
+        // console.log(services)
+        let index=0
+        let doOpen=false
+        for(let serviceName in services){
+            // console.log(index,services[serviceName])
+            if(services[serviceName]&&index>=5){
+                doOpen=true
+            }
+            index++
+        }
+        if(doOpen){
+            // console.log('extending because hidden')
+            this.setState({extended:true})
+        }
     }
     changeLocation=event=>{
         this.setState({location:event.target.value})
@@ -72,8 +114,8 @@ class SearchDeptoHBar extends Component{
     disableInputHandler=(inputName)=>{
         const input= document.getElementById(inputName)
         if(!input.disabled){
-            input.value=undefined
-            this.setState({[inputName]:undefined})
+            input.value=""
+            this.setState({[inputName]:""})
         }   
         input.disabled=!input.disabled
     }
@@ -105,6 +147,7 @@ class SearchDeptoHBar extends Component{
                     <SearchParam //Set caption inside component before adding another
                     param={param} 
                     key={param}
+                    value={this.state[param]}
                     changeInputHandler={this.changeInputHandler} 
                     disableInputHandler={this.disableInputHandler}/>
                 ))
@@ -112,7 +155,10 @@ class SearchDeptoHBar extends Component{
                 <div className={classes.Block}>
                     <div className={classes.Location}>
                         <h6 >Ubicacion</h6>
-                        <Form.Control size="sm" as="select" onChange={this.changeLocation}>
+                        <Form.Control 
+                            size="sm" as="select" 
+                            onChange={this.changeLocation}
+                            value={this.state.location}>
                             <option>Cualquiera</option>
                             <option>Cabrero</option>
                             <option>Marbella</option>
@@ -123,19 +169,26 @@ class SearchDeptoHBar extends Component{
                 </div>
                 <div className={classes.Block}>
                     <div className={classes.Inline}>
-                        <h6 className={classes.Pool}>Pileta</h6>
-                        <OnOff clicked={this.toggleService}/>
+                        <h6 className={classes.Pool}>{onoffParam}</h6>
+                        {/* SET ONOFF PARAM DINAMYCALLY THROUGH GLOBAL VARIABLE "onoffParam" */}
+                        <OnOff 
+                            checked={this.state.services[onoffParam]} 
+                            clicked={this.toggleService}
+                            onoffParam={onoffParam}/>
                     </div>
                 </div>
                 <div className={classes.Block}>
                     <h6 className={classes.Amenities}>Añade Filtros</h6>
                     <ServicesTags 
-                        toggleService={this.toggleService}
-                        defaultServices={['Wifi','Aire acondicionado']} />
+                        toggleExtendedServices={this.toggleExtendedServices}
+                        extended={this.state.extended}
+                        onoffParam={onoffParam}
+                        initServicesState={this.state.services}
+                        toggleService={this.toggleService} />
                 </div>
                     <DatePicker 
-                        endDate={this.state.endDate}
-                        startDate={this.state.startDate}
+                        endDate={this.state.dates.endDate}
+                        startDate={this.state.dates.startDate}
                         setSearchBarDates={this.setSearchBarDates} />
                 <div className={classes.Block}>
                     <Button 

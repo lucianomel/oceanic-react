@@ -3,40 +3,53 @@ import { Component } from "react";
 import {Button} from 'react-bootstrap'
 
 class ServicesTags extends Component{
-    state={
-        extended:false
-    }
     fetchServicesFields(){
-        return [
-            'Aire acondicionado',
-            'Wifi',
-            'Desayuno',
-            'Cocina',
-            'Parking',
-            'bano privado',
-            'Lavarropas',
-            'Frente a la playa',
-            'Gimnasio',
-            'Seguridad 24 hr',
-            'Calefaccion',
-            'Pileta propia',
-            'Accesibilidad silla ruedas',
-            'Heladera'
-        ]
+        const services=this.props.initServicesState
+        const servicesArr=[]
+        for (let serviceName in services){
+            const parserServiceName=serviceName.replaceAll('_',' ')
+            
+            servicesArr.push(parserServiceName)
+        }
+        return servicesArr
+        // return [
+        //     'Aire acondicionado',
+        //     'Wifi',
+        //     'Desayuno',
+        //     'Cocina',
+        //     'Parking',
+        //     'bano privado',
+        //     'Lavarropas',
+        //     'Frente a la playa',
+        //     'Gimnasio',
+        //     'Seguridad 24 hr',
+        //     'Calefaccion',
+        //     'Pileta propia',
+        //     'Accesibilidad silla ruedas',
+        //     'Heladera'
+        // ]
     }
     componentDidMount(){
-        this.colorDefaultSelected(['Wifi','Aire acondicionado'])
+        this.colorDefaultSelected(this.props.initServicesState)
     }
-    colorDefaultSelected=arrServices=>{
-        arrServices.forEach(
-            service=>{
-                const btn=document.getElementById(service)
+    componentDidUpdate(){
+        this.colorDefaultSelected(this.props.initServicesState)
+    }
+    colorDefaultSelected=initServices=>{
+        for(let serviceName in initServices){
+            if(initServices[serviceName]&&serviceName!=this.props.onoffParam){
+                const parsedServiceName=serviceName.replaceAll('_',' ')
+                // console.log(parsedServiceName)
+                const btn=document.getElementById(parsedServiceName)
                 btn.classList.add(classes.service__selected)
             }
-        )
-    }
-    moreServices=()=>{
-        this.setState({extended:true})
+        }
+        // arrServices.forEach(
+        //     service=>{
+        //         const btn=document.getElementById(service)
+        //         btn.classList.add(classes.service__selected)
+        //     }
+        // )
     }
     selectedService=(service)=>{
         const parsedServ=service.replaceAll(' ','_')
@@ -53,22 +66,23 @@ class ServicesTags extends Component{
             <div className={classes.ServicesTags__options}>
                 <ul>
                     {this.fetchServicesFields().map((service,index)=>{
-                        if(index<5||this.state.extended){
+                        // if(index<5||this.state.extended){
                             return <Button variant="dark" 
+                            hidden={index>=5&&!this.props.extended?true:false}
                             key={service}
                             id={service}
                             onClick={this.selectedService.bind(this,service)} 
                             style={{margin:'0.3rem'}}>
                                 {service}
                             </Button>
-                        }
-                        return null;
+                        // }
+                        // return null;
                     })}
-                    {this.state.extended?null:<p 
-                        className={classes.ExtendLink} 
-                        onClick={this.moreServices}>
-                            More
-                        </p>}
+                    <p 
+                    className={classes.ExtendLink} 
+                    onClick={this.props.toggleExtendedServices}>
+                        {this.props.extended?"Less":"More"}
+                    </p>
                 </ul>
             </div>
         )

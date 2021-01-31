@@ -18,6 +18,9 @@ class DatePicker extends Component{
                 endDate:this.state.endDate,
             })
         }
+        if(!this.state.endDate&&!this.state.startDate){
+            this.setState({startDate:this.props.startDate,endDate:this.props.endDate})
+        }
     }
     render(){
         return(

@@ -4,7 +4,7 @@ import ScrollingDeptos from '../../components/ScrollingDeptos/ScrollingDeptos'
 import SearchDeptoHBar from '../../components/SearchDeptoHBar/SearchDeptoHBar'
 import NavbarSpace from '../../components/UI/Navbar/NavbarSpace/NavbarSpace'
 import axios from '../../axios'
-
+import moment from 'moment'
 
 class Departamentos extends Component{
     constructor(props){
@@ -24,14 +24,15 @@ class Departamentos extends Component{
     }
     componentDidMount(){
         if(this.props.landingSearchParams){
-            this.loadDeptos(true,this.props.landingSearchParams)
+            return this.loadDeptos(true,this.props.landingSearchParams)
         }
         const lastStateStored=JSON.parse(localStorage.getItem('lastState'))
-        console.log(lastStateStored)
+        // console.log(lastStateStored)
         if(lastStateStored){
-            console.log('Seting last state')
+            // console.log('Seting last state')
             return this.setState({...lastStateStored,loading:false})
         }
+        this.loadDeptos(true)
     }
     loadDeptos=(goToFirsPage,landingSearchParams)=>{
         this.scrollUp()
@@ -78,7 +79,7 @@ class Departamentos extends Component{
         // Dates
         const startDate=document.getElementById('start_date_id').value
         const endDate=document.getElementById('end_date_id').value
-        searchParams.dates={startDate:startDate,endDate:endDate}
+        searchParams.dates={startDate:moment(startDate),endDate:moment(endDate)}
         this.setState({loading:true})
 
         // Cache stuff
@@ -87,10 +88,10 @@ class Departamentos extends Component{
                 searchParams[prop]=''
             }
         }
-        const cachedHits= localStorage.getItem('oceanicSearch').trim()
-        const searchParamsString=JSON.stringify(searchParams).trim()
+        const cachedHits= localStorage.getItem('oceanicSearch')
+        const searchParamsString=JSON.stringify(searchParams)
 
-        if(cachedHits===searchParamsString){
+        if(cachedHits&&cachedHits===searchParamsString){
             const lastState=JSON.parse(localStorage.getItem('lastState'))
             console.log('lastState page: ',lastState.pagination.currentPage)
             console.log('current state page: ',this.state.pagination.currentPage)

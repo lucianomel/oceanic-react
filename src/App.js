@@ -9,7 +9,6 @@ import Footer from './components/Footer/Footer';
 import Author from './components/Author/Author'
 import Departamentos from './containers/Departamentos/Departamentos';
 import Login from './components/Login/Login';
-import Details from './components/DeptoDetails/DeptoDetails';
 import DeptoDetails from './components/DeptoDetails/DeptoDetails';
 
 function App(props) {

@@ -2,7 +2,8 @@
     background-color: green;
 }
 .service__selected:focus,
-.service__selected:active{
+.service__selected:active,
+.service__selected:hover{
     background-color: green;
 }
 .ExtendLink{

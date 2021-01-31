@@ -20,6 +20,7 @@ const SearchParam=props=>{
                 <span>
                     <input 
                         id={props.param}
+                        value={props.value}
                         type='number' min='1'
                         onChange={(event)=>props.changeInputHandler(event,props.param)}
                          />
